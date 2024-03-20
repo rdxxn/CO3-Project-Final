@@ -1,0 +1,64 @@
+                // Check top neighbor
+                if ((CurrentPos.Row > 0 && CurrentPos.Row < 8) &&panel.GetControlFromPosition(CurrentPos.Row - 1, CurrentPos.Column).BackColor == Color.Tan && CurrentPos.Row - 1 != PreviousPos.Row)
+                {
+                    PreviousPos = CurrentPos;
+                    CurrentPos.Row = CurrentPos.Row - 1;
+                    panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column).BackColor = Color.White;
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column));
+                    Console.WriteLine($"up R: {CurrentPos.Row} C: {CurrentPos.Column}");
+                }
+                else if (panel.GetControlFromPosition(CurrentPos.Row - 1, CurrentPos.Column).BackColor == exitColor && CurrentPos.Row > 0 && CurrentPos.Row < 8)
+                {
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row - 1, CurrentPos.Column));
+                    Pathed = true;
+                    Console.WriteLine($"X: {CurrentPos.Row}, Y: {CurrentPos.Column} FOUND");
+                }
+
+                // Check bottom neighbor
+                if ((CurrentPos.Row > 0 && CurrentPos.Row < 8) && panel.GetControlFromPosition(CurrentPos.Row + 1, CurrentPos.Column).BackColor == Color.Tan && CurrentPos.Row + 1 != PreviousPos.Row)
+                {
+                    PreviousPos = CurrentPos;
+                    CurrentPos.Row = CurrentPos.Row + 1;
+                    panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column).BackColor = Color.White;
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column));
+                    Console.WriteLine($"down R: {CurrentPos.Row} C: {CurrentPos.Column}");
+                }
+                else if (panel.GetControlFromPosition(CurrentPos.Row + 1, CurrentPos.Column).BackColor == exitColor && CurrentPos.Row > 0 && CurrentPos.Row < 8)
+                {
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row + 1, CurrentPos.Column));
+                    Pathed = true;
+                    Console.WriteLine($"X: {CurrentPos.Row}, Y: {CurrentPos.Column} FOUND");
+                }
+
+                // Check left neighbor
+                if (panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column - 1).BackColor == Color.Tan && CurrentPos.Column > 0 && CurrentPos.Column < 15 && CurrentPos.Column - 1 != PreviousPos.Column)
+                {
+                    PreviousPos = CurrentPos;
+                    CurrentPos.Column = CurrentPos.Column - 1;
+                    panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column).BackColor = Color.White;
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column));
+                    Console.WriteLine($"left R: {CurrentPos.Row} C: {CurrentPos.Column}");
+                }
+                else if (panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column - 1).BackColor == exitColor && CurrentPos.Column > 0 && CurrentPos.Column < 15)
+                {
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column - 1));
+                    Pathed = true;
+                    Console.WriteLine($"X: {CurrentPos.Row}, Y: {CurrentPos.Column} FOUND");
+                }
+
+                // Check right neighbor
+                if (panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column + 1).BackColor == Color.Tan && CurrentPos.Column > 0 && CurrentPos.Column < 15 && CurrentPos.Column + 1 != PreviousPos.Column)
+                {
+                    PreviousPos = CurrentPos;
+                    CurrentPos.Column = CurrentPos.Column + 1;
+                    panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column).BackColor = Color.White;
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column));
+                    Console.WriteLine($"right R: {CurrentPos.Row} C: {CurrentPos.Column}");
+                }
+                else if (panel.GetControlFromPosition(CurrentPos.Row, CurrentPos.Column + 1).BackColor == exitColor && CurrentPos.Column > 0 && CurrentPos.Column < 15)
+                {
+                    path.Add(GetCenterPosition(panel, CurrentPos.Row, CurrentPos.Column + 1));
+                    Pathed = true;
+                    Console.WriteLine($"X: {CurrentPos.Row}, Y: {CurrentPos.Column} FOUND");
+                }
+                debugCounter++;
