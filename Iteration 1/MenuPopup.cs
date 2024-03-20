@@ -22,7 +22,7 @@ namespace Iteration_1
             //Check if eligible for the leaderboard
             if (MapSelectMenu.map == MapSelectMenu.SelectedMap.Map1)
             {
-                if (gameBoard.game.currentWave > gameBoard.LeaderBoard1.getLowest(DifficultySelectMenu.difficulty) && gameBoard.game != null)
+                if (gameBoard.game != null && gameBoard.game.currentWave > gameBoard.LeaderBoard1.getLowest(DifficultySelectMenu.difficulty))
                 {
                     ScoreLabel.Text = "Score: " + gameBoard.game.currentWave;
                     ScoreLabel.Visible = true;
